@@ -3,22 +3,23 @@
 client_id = "2d4ebc7444f503feaad9f8c72e872f54"
 name = "add-edit-bundle"
 handle = "add-edit-bundle"
-application_url = "https://building-showcase-adverse-witnesses.trycloudflare.com"
+application_url = "https://mexico-preliminary-bull-pants.trycloudflare.com"
 embedded = true
 
 [build]
 automatically_update_urls_on_dev = true
 dev_store_url = "rajatcc.myshopify.com"
+include_config_on_deploy = true
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "write_products, read_products"
+scopes = "read_products,write_products"
 
 [auth]
 redirect_urls = [
-  "https://building-showcase-adverse-witnesses.trycloudflare.com/auth/callback",
-  "https://building-showcase-adverse-witnesses.trycloudflare.com/auth/shopify/callback",
-  "https://building-showcase-adverse-witnesses.trycloudflare.com/api/auth/callback"
+  "https://mexico-preliminary-bull-pants.trycloudflare.com/auth/callback",
+  "https://mexico-preliminary-bull-pants.trycloudflare.com/auth/shopify/callback",
+  "https://mexico-preliminary-bull-pants.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
