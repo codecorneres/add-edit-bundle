@@ -20,6 +20,7 @@ import { useEffect, useState } from "react";
 import { useFetcher, useLoaderData } from "@remix-run/react";
 import actions from "./action/actions";
 import getBundleSettings from "./server/getBundleSettings";
+import { useAppBridge } from "@shopify/app-bridge-react";
 
 export const loader = async ({ request }) => {
   const data = await getBundleSettings(request);
@@ -715,6 +716,8 @@ export default function Bundle() {
 
   const [form, setForm] = useState(initialForm);
   const [loading, setLoading] = useState(false);
+  const fetcher = useFetcher();
+  const shopify = useAppBridge();
 
   useEffect(() => {
     if (data) {
@@ -752,7 +755,6 @@ export default function Bundle() {
     },
   ];
 
-  const fetcher = useFetcher();
   const handleSave = () => {
     setLoading(true);
     fetcher.submit(
@@ -765,6 +767,7 @@ export default function Bundle() {
     if (fetcher.state === "idle" && fetcher.data) {
       setForm(fetcher.data);
       setLoading(false);
+      shopify.toast.show("Saved");
     }
   }, [fetcher.state]);
   return (
