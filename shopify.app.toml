@@ -3,7 +3,7 @@
 client_id = "2d4ebc7444f503feaad9f8c72e872f54"
 name = "add-edit-bundle"
 handle = "add-edit-bundle"
-application_url = "https://geographical-march-optimal-halifax.trycloudflare.com"
+application_url = "https://add-edit-bundle.vercel.app"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "read_products,write_products"
 
 [auth]
 redirect_urls = [
-  "https://geographical-march-optimal-halifax.trycloudflare.com/auth/callback",
-  "https://geographical-march-optimal-halifax.trycloudflare.com/auth/shopify/callback",
-  "https://geographical-march-optimal-halifax.trycloudflare.com/api/auth/callback"
+  "https://add-edit-bundle.vercel.app/auth/callback",
+  "https://add-edit-bundle.vercel.app/auth/shopify/callback",
+  "https://add-edit-bundle.vercel.app/api/auth/callback"
 ]
 
 [webhooks]
