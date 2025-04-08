@@ -15,12 +15,14 @@ import {
   InlineStack,
   RadioButton,
   hsbToHex,
+  Box
 } from "@shopify/polaris";
 import { useEffect, useState } from "react";
 import { useFetcher, useLoaderData } from "@remix-run/react";
 import actions from "./action/actions";
 import getBundleSettings from "./server/getBundleSettings";
 import { useAppBridge } from "@shopify/app-bridge-react";
+import styles from "./_index/styles.module.css";
 
 export const loader = async ({ request }) => {
   const data = await getBundleSettings(request);
@@ -35,6 +37,7 @@ export const action = async ({ request }) => {
 };
 
 const BlockLayout = ({ data, handleChange }) => {
+  console.log(data, 'data')
   const optionsAlignment = [
     { label: "Left", value: "left" },
     { label: "Center", value: "center" },
@@ -144,84 +147,90 @@ const OffersLayout = ({ data, handleChange }) => {
         onSelect={(e) => handleChange(e, "offerTab")}
       >
         {data.offerTab == "0" && (
-          <FormLayout.Group title={`Offer #${data.offerTab + 1}`}>
-            <TextField
-              label="Title"
-              name="offerOneTitle"
-              value={data.offerOneTitle}
-              onChange={(e) => handleChange(e, "offerOneTitle")}
-              autoComplete="off"
-            />
-            <TextField
-              label="Subtitle"
-              name="offerOneSubtitle"
-              value={data.offerOneSubtitle}
-              onChange={(e) => handleChange(e, "offerOneSubtitle")}
-              autoComplete="off"
-            />
-            <TextField
-              label="Quantity"
-              type="number"
-              value={data.offerOneQty}
-              onChange={(e) => handleChange(e, "offerOneQty")}
-              autoComplete="off"
-              min={1}
-            />
-          </FormLayout.Group>
+          <div style={{marginTop: '20px'}}>
+            <FormLayout.Group title={`Offer #${data.offerTab + 1}`}>
+              <TextField
+                label="Title"
+                name="offerOneTitle"
+                value={data.offerOneTitle}
+                onChange={(e) => handleChange(e, "offerOneTitle")}
+                autoComplete="off"
+              />
+              <TextField
+                label="Subtitle"
+                name="offerOneSubtitle"
+                value={data.offerOneSubtitle}
+                onChange={(e) => handleChange(e, "offerOneSubtitle")}
+                autoComplete="off"
+              />
+              <TextField
+                label="Quantity"
+                type="number"
+                value={data.offerOneQty}
+                onChange={(e) => handleChange(e, "offerOneQty")}
+                autoComplete="off"
+                min={1}
+              />
+            </FormLayout.Group>
+          </div>
         )}
         {data.offerTab == "1" && (
-          <FormLayout.Group title={`Offer #${data.offerTab + 1}`}>
-            <TextField
-              label="Title"
-              name="offerTwoTitle"
-              value={data.offerTwoTitle}
-              onChange={(e) => handleChange(e, "offerTwoTitle")}
-              autoComplete="off"
-            />
-            <TextField
-              label="Subtitle"
-              name="offerTwoSubtitle"
-              value={data.offerTwoSubtitle}
-              onChange={(e) => handleChange(e, "offerTwoSubtitle")}
-              autoComplete="off"
-            />
-            <TextField
-              name="offerTwoQty"
-              label="Quantity"
-              type="number"
-              value={data.offerTwoQty}
-              onChange={(e) => handleChange(e, "offerTwoQty")}
-              autoComplete="off"
-              min={1}
-            />
-          </FormLayout.Group>
+          <div style={{marginTop: '20px'}}>
+            <FormLayout.Group title={`Offer #${data.offerTab + 1}`}>
+              <TextField
+                label="Title"
+                name="offerTwoTitle"
+                value={data.offerTwoTitle}
+                onChange={(e) => handleChange(e, "offerTwoTitle")}
+                autoComplete="off"
+              />
+              <TextField
+                label="Subtitle"
+                name="offerTwoSubtitle"
+                value={data.offerTwoSubtitle}
+                onChange={(e) => handleChange(e, "offerTwoSubtitle")}
+                autoComplete="off"
+              />
+              <TextField
+                name="offerTwoQty"
+                label="Quantity"
+                type="number"
+                value={data.offerTwoQty}
+                onChange={(e) => handleChange(e, "offerTwoQty")}
+                autoComplete="off"
+                min={1}
+              />
+            </FormLayout.Group>
+          </div>
         )}
         {data.offerTab == "2" && (
-          <FormLayout.Group title={`Offer #${data.offerTab + 1}`}>
-            <TextField
-              label="Title"
-              name="offerThreeTitle"
-              value={data.offerThreeTitle}
-              onChange={(e) => handleChange(e, "offerThreeTitle")}
-              autoComplete="off"
-            />
-            <TextField
-              label="Subtitle"
-              name="offerThreeSubtitle"
-              value={data.offerThreeSubtitle}
-              onChange={(e) => handleChange(e, "offerThreeSubtitle")}
-              autoComplete="off"
-            />
-            <TextField
-              name="offerThreeQty"
-              label="Quantity"
-              type="number"
-              value={data.offerThreeQty}
-              onChange={(e) => handleChange(e, "offerThreeQty")}
-              autoComplete="off"
-              min={1}
-            />
-          </FormLayout.Group>
+          <div style={{marginTop: '20px'}}>
+            <FormLayout.Group title={`Offer #${data.offerTab + 1}`}>
+              <TextField
+                label="Title"
+                name="offerThreeTitle"
+                value={data.offerThreeTitle}
+                onChange={(e) => handleChange(e, "offerThreeTitle")}
+                autoComplete="off"
+              />
+              <TextField
+                label="Subtitle"
+                name="offerThreeSubtitle"
+                value={data.offerThreeSubtitle}
+                onChange={(e) => handleChange(e, "offerThreeSubtitle")}
+                autoComplete="off"
+              />
+              <TextField
+                name="offerThreeQty"
+                label="Quantity"
+                type="number"
+                value={data.offerThreeQty}
+                onChange={(e) => handleChange(e, "offerThreeQty")}
+                autoComplete="off"
+                min={1}
+              />
+            </FormLayout.Group>
+          </div>
         )}
       </LegacyTabs>
     </FormLayout>
@@ -330,309 +339,448 @@ const ColorsLayout = ({ data, handleChange }) => {
 
   return (
     <FormLayout>
-      <Text variant="headingMd" fontWeight="bold" as="h6">
-        Background
-      </Text>
-      <Grid>
-        <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
-          <InlineStack gap="300" align="start" blockAlign="center">
-            <Button
-              onClick={() => handleOpen("bundle")}
-              variant="secondary"
-              size="medium"
-            >
-              <Text variant="bodySm" as="span">
+      <div className="options" style={{marginTop: "20px"}}>
+        <div className="colorLayoutTitle" style={{borderBottom: "1px solid #E1E1E1", paddingBottom: "10px", marginBottom: "20px"}}>
+          <Text variant="headingLg" fontWeight="bold" as="h2">
+            Background
+          </Text>
+        </div>
+        <Grid>
+          <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 3, xl: 3 }}>
+            <div className={styles.themeColorOption}>
+              <Box gap="300" align="start" blockAlign="center">
                 <div
-                  style={{
-                    backgroundColor: hsbToHex(data.bundleBackColor),
-                    width: "30px",
-                    height: "20px",
-                    borderRadius: "5px",
-                  }}
-                ></div>
-              </Text>
-            </Button>
-            <Text variant="bodyMd" as="h3">
-              Bundle
-            </Text>
-          </InlineStack>
-          {open == "bundle" && (
-            <div style={{ marginTop: "10px" }}>
-              <ColorPicker
-                onChange={(e) => handleChange(e, "bundleBackColor")}
-                color={data.bundleBackColor}
-                allowAlpha
-              />
+                  
+                  variant="secondary"
+                  size="medium"
+                  style={{padding: "10px 10px 8px", borderRadius: "10px", backgroundColor: '#fff', boxShadow: "0px 4px 10px 0px rgba(0,0,0,0.15)"}}
+                >
+                  <div className={styles.colorBox}>
+                    <div
+                      onClick={() => handleOpen("bundle")}
+                      style={{
+                        backgroundColor: hsbToHex(data.bundleBackColor),
+                        width: "100%",
+                        height: "110px",
+                        borderRadius: "12px",
+                        cursor: "pointer",
+                        border: `1px solid rgba(0,0,0,0.06)`,
+                      }}
+                    ></div>
+                    <div className={styles.colorCode}>
+                      <Text variant="bodyXs" as="h3" fontWeight="bold">
+                        {hsbToHex(data.bundleBackColor)}
+                      </Text>
+                    </div>
+                  </div>
+                  
+                
+                  <div style={{marginTop: "8px"}}>
+                      <Text variant="bodyMd" as="h3" alignment="center" fontWeight="bold">
+                        Bundle Background
+                      </Text>
+                  </div>
+                </div>
+              </Box>
+              {open == "bundle" && (
+                <div style={{ marginTop: "10px" }} className={styles.colorPicker}>
+                  <ColorPicker
+                    onChange={(e) => handleChange(e, "bundleBackColor")}
+                    color={data.bundleBackColor}
+                    allowAlpha
+                  />
+                </div>
+              )}
             </div>
-          )}
-        </Grid.Cell>
-        <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
-          <InlineStack gap="300" align="start" blockAlign="center">
-            <Button
-              onClick={() => handleOpen("border")}
-              variant="secondary"
-              size="medium"
-            >
-              <Text variant="bodySm" as="span">
+          </Grid.Cell>
+          <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 3, xl: 3 }}>
+          <div className={styles.themeColorOption}>
+            <Box gap="300" align="start" blockAlign="center">
+              <div
+                variant="secondary"
+                size="medium"
+                style={{padding: "10px 10px 8px", borderRadius: "10px", backgroundColor: '#fff', boxShadow: "0px 4px 10px 0px rgba(0,0,0,0.15)"}}
+              >
+                <div className={styles.colorBox}>
+                  <div
+                    onClick={() => handleOpen("border")}
+                    style={{
+                      backgroundColor: hsbToHex(data.borderColor),
+                      width: "100%",
+                      height: "110px",
+                      borderRadius: "12px",
+                      cursor: "pointer",
+                      border: `1px solid rgba(0,0,0,0.06)`,
+                    }}
+                  ></div>
+                  <div className={styles.colorCode}>
+                    <Text variant="bodyXs" as="h3" fontWeight="bold">
+                      {hsbToHex(data.borderColor)}
+                    </Text>
+                  </div>
+                </div>
+              
+                <div style={{marginTop: "8px"}}>
+                    <Text variant="bodyMd" as="h3" alignment="center" fontWeight="bold">
+                      Border
+                    </Text>
+                </div>
+              </div>
+            </Box>
+            {open == "border" && (
+              <div style={{ marginTop: "10px" }} className={styles.colorPicker}>
+                <ColorPicker
+                  onChange={(e) => handleChange(e, "borderColor")}
+                  color={data.borderColor}
+                  allowAlpha
+                />
+              </div>
+            )}
+            </div>
+          </Grid.Cell>
+          <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 3, xl: 3 }}>
+            <div className={styles.themeColorOption}>
+              <Box gap="300" align="start" blockAlign="center">
                 <div
-                  style={{
-                    backgroundColor: hsbToHex(data.borderColor),
-                    width: "30px",
-                    height: "20px",
-                    borderRadius: "5px",
-                  }}
-                ></div>
-              </Text>
-            </Button>
-            <Text variant="bodyMd" as="h3">
-              Border
-            </Text>
-          </InlineStack>
-          {open == "border" && (
-            <div style={{ marginTop: "10px" }}>
-              <ColorPicker
-                onChange={(e) => handleChange(e, "borderColor")}
-                color={data.borderColor}
-                allowAlpha
-              />
+                  variant="secondary"
+                  size="medium"
+                  style={{padding: "10px 10px 8px", borderRadius: "10px", backgroundColor: '#fff', boxShadow: "0px 4px 10px 0px rgba(0,0,0,0.15)"}}
+                >
+                  <div className={styles.colorBox}>
+                    <div
+                      onClick={() => handleOpen("selected_bundle")}
+                      style={{
+                        backgroundColor: hsbToHex(data.selectBundleBackColor),
+                        width: "100%",
+                        height: "110px",
+                        borderRadius: "12px",
+                        cursor: "pointer",
+                        border: `1px solid rgba(0,0,0,0.06)`,
+                      }}
+                    ></div>
+                    <div className={styles.colorCode}>
+                      <Text variant="bodyXs" as="h3" fontWeight="bold">
+                        {hsbToHex(data.selectBundleBackColor)}
+                      </Text>
+                    </div>
+                  </div>
+                  
+                
+                  <div style={{marginTop: "8px"}}>
+                      <Text variant="bodyMd" as="h3" alignment="center" fontWeight="bold">
+                        Selected Bundle
+                      </Text>
+                  </div>
+                </div>
+              </Box>
+              {open == "selected_bundle" && (
+                <div style={{ marginTop: "10px" }} className={styles.colorPicker}>
+                  <ColorPicker
+                    onChange={(e) => handleChange(e, "selectBundleBackColor")}
+                    color={data.selectBundleBackColor}
+                    allowAlpha
+                  />
+                </div>
+              )}
             </div>
-          )}
-        </Grid.Cell>
-        <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
-          <InlineStack gap="300" align="start" blockAlign="center">
-            <Button
-              onClick={() => handleOpen("selected_bundle")}
-              variant="secondary"
-              size="medium"
-            >
-              <Text variant="bodySm" as="span">
-                <div
-                  style={{
-                    backgroundColor: hsbToHex(data.selectBundleBackColor),
-                    width: "30px",
-                    height: "20px",
-                    borderRadius: "5px",
-                  }}
-                ></div>
-              </Text>
-            </Button>
-            <Text variant="bodyMd" as="h3">
-              Selected Bundle
-            </Text>
-          </InlineStack>
-          {open == "selected_bundle" && (
-            <div style={{ marginTop: "10px" }}>
-              <ColorPicker
-                onChange={(e) => handleChange(e, "selectBundleBackColor")}
-                color={data.selectBundleBackColor}
-                allowAlpha
-              />
+          </Grid.Cell>
+          <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 3, xl: 3 }}>
+          <div className={styles.themeColorOption}>
+            <Box gap="300" align="start" blockAlign="center">
+              <div
+                variant="secondary"
+                size="medium"
+                style={{padding: "10px 10px 8px", borderRadius: "10px", backgroundColor: '#fff', boxShadow: "0px 4px 10px 0px rgba(0,0,0,0.15)"}}
+              >
+                <div className={styles.colorBox}>
+                  <div
+                    onClick={() => handleOpen("border_selected_bundle")}
+                    style={{
+                      backgroundColor: hsbToHex(data.selectBorderColor),
+                      width: "100%",
+                      height: "110px",
+                      borderRadius: "12px",
+                      cursor: "pointer",
+                      border: `1px solid rgba(0,0,0,0.06)`,
+                    }}
+                  ></div>
+                  <div className={styles.colorCode}>
+                    <Text variant="bodyXs" as="h3" fontWeight="bold">
+                      {hsbToHex(data.selectBorderColor)}
+                    </Text>
+                  </div>
+                </div>
+              
+                <div style={{marginTop: "8px"}}>
+                    <Text variant="bodyMd" as="h3" alignment="center" fontWeight="bold">
+                      Border selected bundle
+                    </Text>
+                </div>
+              </div>
+            </Box>
+            {open == "border_selected_bundle" && (
+              <div style={{ marginTop: "10px" }} className={styles.colorPicker}>
+                <ColorPicker
+                  onChange={(e) => handleChange(e, "selectBorderColor")}
+                  color={data.selectBorderColor}
+                  allowAlpha
+                />
+              </div>
+            )}
             </div>
-          )}
-        </Grid.Cell>
-        <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
-          <InlineStack gap="300" align="start" blockAlign="center">
-            <Button
-              onClick={() => handleOpen("border_selected_bundle")}
-              variant="secondary"
-              size="medium"
-            >
-              <Text variant="bodySm" as="span">
-                <div
-                  style={{
-                    backgroundColor: hsbToHex(data.selectBorderColor),
-                    width: "30px",
-                    height: "20px",
-                    borderRadius: "5px",
-                  }}
-                ></div>
-              </Text>
-            </Button>
-            <Text variant="bodyMd" as="h3">
-              Border selected bundle
-            </Text>
-          </InlineStack>
-          {open == "border_selected_bundle" && (
-            <div style={{ marginTop: "10px" }}>
-              <ColorPicker
-                onChange={(e) => handleChange(e, "selectBorderColor")}
-                color={data.selectBorderColor}
-                allowAlpha
-              />
+          </Grid.Cell>
+        </Grid>
+      </div>
+
+      <div className="options" style={{marginTop: "20px"}}>
+        <div className="colorLayoutTitle" style={{borderBottom: "1px solid #E1E1E1", paddingBottom: "10px", marginBottom: "20px"}}>
+          <Text variant="headingLg" fontWeight="bold" as="h2">
+            Pricing
+          </Text>
+        </div>
+
+      
+        <Grid>
+          <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 3, xl: 3 }}>
+          <div className={styles.themeColorOption}>
+            <Box gap="300" align="start" blockAlign="center">
+              <div
+                variant="secondary"
+                size="medium"
+                style={{padding: "10px 10px 8px", borderRadius: "10px", backgroundColor: '#fff', boxShadow: "0px 4px 10px 0px rgba(0,0,0,0.15)"}}
+              >
+                <div className={styles.colorBox}>
+                  <div
+                    onClick={() => handleOpen("price")}
+                    style={{
+                      backgroundColor: hsbToHex(data.priceColor),
+                      width: "100%",
+                      height: "110px",
+                      borderRadius: "12px",
+                      cursor: "pointer",
+                      border: `1px solid rgba(0,0,0,0.06)`,
+                    }}
+                  ></div>
+                  <div className={styles.colorCode}>
+                    <Text variant="bodyXs" as="h3" fontWeight="bold">
+                      {hsbToHex(data.priceColor)}
+                    </Text>
+                  </div>
+                </div>
+              
+            
+                <div style={{marginTop: "8px"}}>
+                    <Text variant="bodyMd" as="h3" alignment="center" fontWeight="bold">
+                      Price
+                    </Text>
+                </div>
+              </div>
+            </Box>
+            {open == "price" && (
+              <div style={{ marginTop: "10px" }} className={styles.colorPicker}>
+                <ColorPicker
+                  onChange={(e) => handleChange(e, "priceColor")}
+                  color={data.priceColor}
+                  allowAlpha
+                />
+              </div>
+            )}
             </div>
-          )}
-        </Grid.Cell>
-      </Grid>
-      <Text variant="headingMd" fontWeight="bold" as="h6">
-        Pricing
-      </Text>
-      <Grid>
-        <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
-          <InlineStack gap="300" align="start" blockAlign="center">
-            <Button
-              onClick={() => handleOpen("price")}
-              variant="secondary"
-              size="medium"
-            >
-              <Text variant="bodySm" as="span">
-                <div
-                  style={{
-                    backgroundColor: hsbToHex(data.priceColor),
-                    width: "30px",
-                    height: "20px",
-                    borderRadius: "5px",
-                  }}
-                ></div>
-              </Text>
-            </Button>
-            <Text variant="bodyMd" as="h3">
-              Price
-            </Text>
-          </InlineStack>
-          {open == "price" && (
-            <div style={{ marginTop: "10px" }}>
-              <ColorPicker
-                onChange={(e) => handleChange(e, "priceColor")}
-                color={data.priceColor}
-                allowAlpha
-              />
+          </Grid.Cell>
+          <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 3, xl: 3 }}>
+          <div className={styles.themeColorOption}>
+            <Box gap="300" align="start" blockAlign="center">
+              <div
+                
+                variant="secondary"
+                size="medium"
+                style={{padding: "10px 10px 8px", borderRadius: "10px", backgroundColor: '#fff', boxShadow: "0px 4px 10px 0px rgba(0,0,0,0.15)"}}
+              >
+                <div className={styles.colorBox}>
+                  <div
+                    onClick={() => handleOpen("compared_price")}
+                    style={{
+                      backgroundColor: hsbToHex(data.comparedPriceColor),
+                      width: "100%",
+                      height: "110px",
+                      borderRadius: "12px",
+                      cursor: "pointer",
+                      border: `1px solid rgba(0,0,0,0.06)`,
+                    }}
+                  ></div>
+                  <div className={styles.colorCode}>
+                    <Text variant="bodyXs" as="h3" fontWeight="bold">
+                      {hsbToHex(data.comparedPriceColor)}
+                    </Text>
+                  </div>
+                </div>
+              
+                <div style={{marginTop: "8px"}}>
+                  <Text variant="bodyMd" as="h3" alignment="center" fontWeight="bold">
+                    Compared Price
+                  </Text>
+                </div>
+              </div>
+            </Box>
+            {open == "compared_price" && (
+              <div style={{ marginTop: "10px" }} className={styles.colorPicker}>
+                <ColorPicker
+                  onChange={(e) => handleChange(e, "comparedPriceColor")}
+                  color={data.comparedPriceColor}
+                  allowAlpha
+                />
+              </div>
+            )}
             </div>
-          )}
-        </Grid.Cell>
-        <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
-          <InlineStack gap="300" align="start" blockAlign="center">
-            <Button
-              onClick={() => handleOpen("compared_price")}
-              variant="secondary"
-              size="medium"
-            >
-              <Text variant="bodySm" as="span">
-                <div
-                  style={{
-                    backgroundColor: hsbToHex(data.comparedPriceColor),
-                    width: "30px",
-                    height: "20px",
-                    borderRadius: "5px",
-                  }}
-                ></div>
-              </Text>
-            </Button>
-            <Text variant="bodyMd" as="h3">
-              Compared Price
-            </Text>
-          </InlineStack>
-          {open == "compared_price" && (
-            <div style={{ marginTop: "10px" }}>
-              <ColorPicker
-                onChange={(e) => handleChange(e, "comparedPriceColor")}
-                color={data.comparedPriceColor}
-                allowAlpha
-              />
+          </Grid.Cell>
+        </Grid>
+      </div>
+
+      <div className="options" style={{marginTop: "20px"}}>
+        <div className="colorLayoutTitle" style={{borderBottom: "1px solid #E1E1E1", paddingBottom: "10px", marginBottom: "20px"}}>
+          <Text variant="headingLg" fontWeight="bold" as="h2">
+            Text
+          </Text>
+        </div>
+        <Grid>
+          <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 3, xl: 3 }}>
+          <div className={styles.themeColorOption}>
+            <Box gap="300" align="start" blockAlign="center">
+              <div
+                
+                variant="secondary"
+                size="medium"
+                style={{padding: "10px 10px 8px", borderRadius: "10px", backgroundColor: '#fff', boxShadow: "0px 4px 10px 0px rgba(0,0,0,0.15)"}}
+              >
+                <div className={styles.colorBox}>
+                  <div
+                    onClick={() => handleOpen("header")}
+                    style={{
+                      backgroundColor: hsbToHex(data.headerColor),
+                      width: "100%",
+                      height: "110px",
+                      borderRadius: "12px",
+                      cursor: "pointer",
+                      border: `1px solid rgba(0,0,0,0.06)`,
+                    }}
+                  ></div>
+                  <div className={styles.colorCode}>
+                    <Text variant="bodyXs" as="h3" fontWeight="bold">
+                      {hsbToHex(data.headerColor)}
+                    </Text>
+                  </div>
+                </div>
+              
+                <div style={{marginTop: "8px"}}>
+                    <Text variant="bodyMd" as="h3" alignment="center" fontWeight="bold">
+                      Header
+                    </Text>
+                </div>
+              </div>
+            </Box>
+            {open == "header" && (
+              <div style={{ marginTop: "10px" }} className={styles.colorPicker}>
+                <ColorPicker
+                  onChange={(e) => handleChange(e, "headerColor")}
+                  color={data.headerColor}
+                  allowAlpha
+                />
+              </div>
+            )}
             </div>
-          )}
-        </Grid.Cell>
-      </Grid>
-      <Text variant="headingMd" fontWeight="bold" as="h6">
-        Text
-      </Text>
-      <Grid>
-        <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
-          <InlineStack gap="300" align="start" blockAlign="center">
-            <Button
-              onClick={() => handleOpen("header")}
-              variant="secondary"
-              size="medium"
-            >
-              <Text variant="bodySm" as="span">
-                <div
-                  style={{
-                    backgroundColor: hsbToHex(data.headerColor),
-                    width: "30px",
-                    height: "20px",
-                    borderRadius: "5px",
-                  }}
-                ></div>
-              </Text>
-            </Button>
-            <Text variant="bodyMd" as="h3">
-              Header
-            </Text>
-          </InlineStack>
-          {open == "header" && (
-            <div style={{ marginTop: "10px" }}>
-              <ColorPicker
-                onChange={(e) => handleChange(e, "headerColor")}
-                color={data.headerColor}
-                allowAlpha
-              />
+          </Grid.Cell>
+          <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 3, xl: 3 }}>
+          <div className={styles.themeColorOption}>
+            <Box gap="300" align="start" blockAlign="center">
+              <div
+                variant="secondary"
+                size="medium"
+                style={{padding: "10px 10px 8px", borderRadius: "10px", backgroundColor: '#fff', boxShadow: "0px 4px 10px 0px rgba(0,0,0,0.15)"}}
+              >
+                <div className={styles.colorBox}>
+                  <div
+                    onClick={() => handleOpen("title")} 
+                    style={{
+                      backgroundColor: hsbToHex(data.titleColor),
+                      width: "100%",
+                      height: "110px",
+                      borderRadius: "12px",
+                      cursor: "pointer",
+                      border: `1px solid rgba(0,0,0,0.06)`,
+                    }}
+                  ></div>
+                  <div className={styles.colorCode}>
+                    <Text variant="bodyXs" as="h3" fontWeight="bold">
+                      {hsbToHex(data.titleColor)}
+                    </Text>
+                  </div>
+                </div>
+              
+                <div style={{marginTop: "8px"}}>
+                  <Text variant="bodyMd" as="h3" alignment="center" fontWeight="bold">
+                    Title
+                    </Text>
+                </div>
+              </div>
+            </Box>
+            {open == "title" && (
+              <div style={{ marginTop: "10px" }} className={styles.colorPicker}>
+                <ColorPicker
+                  onChange={(e) => handleChange(e, "titleColor")}
+                  color={data.titleColor}
+                  allowAlpha
+                />
+              </div>
+            )}
             </div>
-          )}
-        </Grid.Cell>
-        <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
-          <InlineStack gap="300" align="start" blockAlign="center">
-            <Button
-              onClick={() => handleOpen("title")}
-              variant="secondary"
-              size="medium"
-            >
-              <Text variant="bodySm" as="span">
-                <div
-                  style={{
-                    backgroundColor: hsbToHex(data.titleColor),
-                    width: "30px",
-                    height: "20px",
-                    borderRadius: "5px",
-                  }}
-                ></div>
-              </Text>
-            </Button>
-            <Text variant="bodyMd" as="h3">
-              Title
-            </Text>
-          </InlineStack>
-          {open == "title" && (
-            <div style={{ marginTop: "10px" }}>
-              <ColorPicker
-                onChange={(e) => handleChange(e, "titleColor")}
-                color={data.titleColor}
-                allowAlpha
-              />
+          </Grid.Cell>
+          <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 3, xl: 3 }}>
+          <div className={styles.themeColorOption}>
+            <Box gap="300" align="start" blockAlign="center">
+              <div
+                variant="secondary"
+                size="medium"
+                style={{padding: "10px 10px 8px", borderRadius: "10px", backgroundColor: '#fff', boxShadow: "0px 4px 10px 0px rgba(0,0,0,0.15)"}}
+              >
+                <div className={styles.colorBox}>
+                  <div
+                  onClick={() => handleOpen("subTitle")}
+                    style={{
+                      backgroundColor: hsbToHex(data.subTitleColor),
+                      width: "100%",
+                      height: "110px",
+                      borderRadius: "12px",
+                      cursor: "pointer",
+                      border: `1px solid rgba(0,0,0,0.06)`,
+                    }}
+                  ></div>
+                  <div className={styles.colorCode}>
+                    <Text variant="bodyXs" as="h3" fontWeight="bold">
+                      {hsbToHex(data.subTitleColor)}
+                    </Text>
+                  </div>
+                </div>
+              
+                <div style={{marginTop: "8px"}}>
+                    <Text variant="bodyMd" as="h3" alignment="center" fontWeight="bold">
+                      Subtitle 
+                    </Text>
+                </div>
+              </div>
+            </Box>
+            {open == "subTitle" && (
+              <div style={{ marginTop: "10px" }} className={styles.colorPicker}>
+                <ColorPicker
+                  onChange={(e) => handleChange(e, "subTitleColor")}
+                  color={data.subTitleColor}
+                  allowAlpha
+                />
+              </div>
+            )}
             </div>
-          )}
-        </Grid.Cell>
-        <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
-          <InlineStack gap="300" align="start" blockAlign="center">
-            <Button
-              onClick={() => handleOpen("subTitle")}
-              variant="secondary"
-              size="medium"
-            >
-              <Text variant="bodySm" as="span">
-                <div
-                  style={{
-                    backgroundColor: hsbToHex(data.subTitleColor),
-                    width: "30px",
-                    height: "20px",
-                    borderRadius: "5px",
-                  }}
-                ></div>
-              </Text>
-            </Button>
-            <Text variant="bodyMd" as="h3">
-              Subtitle
-            </Text>
-          </InlineStack>
-          {open == "subTitle" && (
-            <div style={{ marginTop: "10px" }}>
-              <ColorPicker
-                onChange={(e) => handleChange(e, "subTitleColor")}
-                color={data.subTitleColor}
-                allowAlpha
-              />
-            </div>
-          )}
-        </Grid.Cell>
-      </Grid>
+          </Grid.Cell>
+        </Grid>
+      </div>
     </FormLayout>
   );
 };
@@ -781,7 +929,7 @@ export default function Bundle() {
       }}
     >
       <Grid>
-        <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
+        <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 7, xl: 7 }}>
           <LegacyCard>
             <Tabs
               tabs={optionsTabs}
@@ -789,6 +937,7 @@ export default function Bundle() {
               onSelect={(e) => handleChange(e, "tab")}
               fitted
             >
+              <div className={styles.tabLayout} style={{overflow: 'auto'}}>
               <LegacyCard.Section>
                 <Form>
                   {form.tab == "0" && (
@@ -805,10 +954,11 @@ export default function Bundle() {
                   )}
                 </Form>
               </LegacyCard.Section>
+              </div>
             </Tabs>
           </LegacyCard>
         </Grid.Cell>
-        <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 6, xl: 6 }}>
+        <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 5, xl: 5 }}>
           <LegacyCard title="Live Preview" sectioned>
             <LegacyCard.Section>
               <div>
@@ -827,11 +977,14 @@ export default function Bundle() {
               </div>
               <div>
                 <div
+                  onClick={() => handleChange("optionOne", "radio")}
                   style={{
-                    border: `${form.radio === "optionOne" ? `2px solid ${hsbToHex(form.selectBorderColor)}` : `2px solid ${hsbToHex(form.borderColor)}`}`,
-                    padding: "12px 20px",
+                    border: `${form.radio === "optionOne" ? `1px solid ${hsbToHex(form.selectBorderColor)}` : `1px solid ${hsbToHex(form.borderColor)}`}`,
+                    padding: "15px 20px",
                     margin: "10px 0",
                     backgroundColor: `${form.radio === "optionOne" ? `${hsbToHex(form.selectBundleBackColor)}` : `${hsbToHex(form.bundleBackColor)}`}`,
+                    borderRadius: '12px',
+                    cursor: "pointer"
                   }}
                 >
                   <div
@@ -848,14 +1001,14 @@ export default function Bundle() {
                         gap: "10px",
                       }}
                     >
-                      <div>
+                      {/* <div>
                         <RadioButton
                           checked={form.radio === "optionOne"}
                           id="optionOne"
                           name="optionOne"
                           onChange={() => handleChange("optionOne", "radio")}
                         />
-                      </div>
+                      </div> */}
                       <div>
                         <div
                           style={{
@@ -872,13 +1025,14 @@ export default function Bundle() {
                             fontWeight: form.titlePriceFontStyle,
                             color: hsbToHex(form.priceColor),
                             marginTop: "7px",
+                            fontWeight: 'bold'
                           }}
                         >
                           ₹{`${(885.95 * form.offerOneQty).toFixed(2)}`}
                         </div>
                       </div>
                     </div>
-                    <div>
+                    <div style={{textAlign: "right"}}>
                       <div
                         style={{
                           fontSize: `${form.subHeaderFontSize}px`,
@@ -903,11 +1057,14 @@ export default function Bundle() {
                   </div>
                 </div>
                 <div
+                 onClick={() => handleChange("optionTwo", "radio")}
                   style={{
-                    border: `${form.radio === "optionTwo" ? `2px solid ${hsbToHex(form.selectBorderColor)}` : `2px solid ${hsbToHex(form.borderColor)}`}`,
-                    padding: "12px 20px",
+                    border: `${form.radio === "optionTwo" ? `1px solid ${hsbToHex(form.selectBorderColor)}` : `1px solid ${hsbToHex(form.borderColor)}`}`,
+                    padding: "15px 20px",
                     margin: "10px 0",
                     backgroundColor: `${form.radio === "optionTwo" ? `${hsbToHex(form.selectBundleBackColor)}` : `${hsbToHex(form.bundleBackColor)}`}`,
+                    borderRadius: '12px',
+                    cursor: "pointer"
                   }}
                 >
                   <div
@@ -924,14 +1081,14 @@ export default function Bundle() {
                         gap: "10px",
                       }}
                     >
-                      <div>
+                      {/* <div>
                         <RadioButton
                           checked={form.radio === "optionTwo"}
                           id="optionTwo"
                           name="optionTwo"
                           onChange={() => handleChange("optionTwo", "radio")}
                         />
-                      </div>
+                      </div> */}
                       <div>
                         <div
                           style={{
@@ -948,13 +1105,14 @@ export default function Bundle() {
                             fontWeight: form.titlePriceFontStyle,
                             marginTop: "7px",
                             color: hsbToHex(form.priceColor),
+                            fontWeight: 'bold'
                           }}
                         >
                           ₹{`${(1594.71 * form.offerTwoQty).toFixed(2)}`}
                         </div>
                       </div>
                     </div>
-                    <div>
+                    <div style={{textAlign: "right"}}>
                       <div
                         style={{
                           fontSize: `${form.subHeaderFontSize}px`,
@@ -979,11 +1137,14 @@ export default function Bundle() {
                   </div>
                 </div>
                 <div
+                  onClick={() => handleChange("optionThree", "radio")}
                   style={{
-                    border: `${form.radio === "optionThree" ? `2px solid ${hsbToHex(form.selectBorderColor)}` : `2px solid ${hsbToHex(form.borderColor)}`}`,
-                    padding: "12px 20px",
+                    border: `${form.radio === "optionThree" ? `1px solid ${hsbToHex(form.selectBorderColor)}` : `1px solid ${hsbToHex(form.borderColor)}`}`,
+                    padding: "15px 20px",
                     margin: "10px 0",
                     backgroundColor: `${form.radio === "optionThree" ? `${hsbToHex(form.selectBundleBackColor)}` : `${hsbToHex(form.bundleBackColor)}`}`,
+                    borderRadius: '12px',
+                    cursor: "pointer"
                   }}
                 >
                   <div
@@ -1000,14 +1161,14 @@ export default function Bundle() {
                         gap: "10px",
                       }}
                     >
-                      <div>
+                      {/* <div>
                         <RadioButton
                           checked={form.radio === "optionThree"}
                           id="optionThree"
                           name="optionThree"
                           onChange={() => handleChange("optionThree", "radio")}
                         />
-                      </div>
+                      </div> */}
                       <div>
                         <div
                           style={{
@@ -1024,13 +1185,14 @@ export default function Bundle() {
                             fontWeight: form.titlePriceFontStyle,
                             marginTop: "7px",
                             color: hsbToHex(form.priceColor),
+                            fontWeight: 'bold'
                           }}
                         >
                           ₹{`${(2126.28 * form.offerThreeQty).toFixed(2)}`}
                         </div>
                       </div>
                     </div>
-                    <div>
+                    <div style={{textAlign: "right"}}>
                       <div
                         style={{
                           fontSize: `${form.subHeaderFontSize}px`,
