@@ -1,0 +1,12 @@
+<!-- blocks/bundle-ui.liquid -->
+<div id="bundle-ui-root" data-product-id="{{ product.id }}" data-variant-id="{{ product.selected_or_first_available_variant.id }}"></div>
+
+<script src="https://bundle-products.codecorners.in/bundle-script.js" defer></script>
+
+{% schema %}
+{
+  "name": "Bundle UI",
+  "target": "section",
+  "settings": []
+}
+{% endschema %}

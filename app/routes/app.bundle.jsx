@@ -15,7 +15,7 @@ import {
   InlineStack,
   RadioButton,
   hsbToHex,
-  Box
+  Box,
 } from "@shopify/polaris";
 import { useEffect, useState } from "react";
 import { useFetcher, useLoaderData } from "@remix-run/react";
@@ -37,7 +37,7 @@ export const action = async ({ request }) => {
 };
 
 const BlockLayout = ({ data, handleChange }) => {
-  console.log(data, 'data')
+  console.log(data, "data");
   const optionsAlignment = [
     { label: "Left", value: "left" },
     { label: "Center", value: "center" },
@@ -147,7 +147,7 @@ const OffersLayout = ({ data, handleChange }) => {
         onSelect={(e) => handleChange(e, "offerTab")}
       >
         {data.offerTab == "0" && (
-          <div style={{marginTop: '20px'}}>
+          <div style={{ marginTop: "20px" }}>
             <FormLayout.Group title={`Offer #${data.offerTab + 1}`}>
               <TextField
                 label="Title"
@@ -175,7 +175,7 @@ const OffersLayout = ({ data, handleChange }) => {
           </div>
         )}
         {data.offerTab == "1" && (
-          <div style={{marginTop: '20px'}}>
+          <div style={{ marginTop: "20px" }}>
             <FormLayout.Group title={`Offer #${data.offerTab + 1}`}>
               <TextField
                 label="Title"
@@ -204,7 +204,7 @@ const OffersLayout = ({ data, handleChange }) => {
           </div>
         )}
         {data.offerTab == "2" && (
-          <div style={{marginTop: '20px'}}>
+          <div style={{ marginTop: "20px" }}>
             <FormLayout.Group title={`Offer #${data.offerTab + 1}`}>
               <TextField
                 label="Title"
@@ -339,8 +339,15 @@ const ColorsLayout = ({ data, handleChange }) => {
 
   return (
     <FormLayout>
-      <div className="options" style={{marginTop: "20px"}}>
-        <div className="colorLayoutTitle" style={{borderBottom: "1px solid #E1E1E1", paddingBottom: "10px", marginBottom: "20px"}}>
+      <div className="options" style={{ marginTop: "20px" }}>
+        <div
+          className="colorLayoutTitle"
+          style={{
+            borderBottom: "1px solid #E1E1E1",
+            paddingBottom: "10px",
+            marginBottom: "20px",
+          }}
+        >
           <Text variant="headingLg" fontWeight="bold" as="h2">
             Background
           </Text>
@@ -350,10 +357,14 @@ const ColorsLayout = ({ data, handleChange }) => {
             <div className={styles.themeColorOption}>
               <Box gap="300" align="start" blockAlign="center">
                 <div
-                  
                   variant="secondary"
                   size="medium"
-                  style={{padding: "10px 10px 8px", borderRadius: "10px", backgroundColor: '#fff', boxShadow: "0px 4px 10px 0px rgba(0,0,0,0.15)"}}
+                  style={{
+                    padding: "10px 10px 8px",
+                    borderRadius: "10px",
+                    backgroundColor: "#fff",
+                    boxShadow: "0px 4px 10px 0px rgba(0,0,0,0.15)",
+                  }}
                 >
                   <div className={styles.colorBox}>
                     <div
@@ -373,17 +384,24 @@ const ColorsLayout = ({ data, handleChange }) => {
                       </Text>
                     </div>
                   </div>
-                  
-                
-                  <div style={{marginTop: "8px"}}>
-                      <Text variant="bodyMd" as="h3" alignment="center" fontWeight="bold">
-                        Bundle Background
-                      </Text>
+
+                  <div style={{ marginTop: "8px" }}>
+                    <Text
+                      variant="bodyMd"
+                      as="h3"
+                      alignment="center"
+                      fontWeight="bold"
+                    >
+                      Bundle Background
+                    </Text>
                   </div>
                 </div>
               </Box>
               {open == "bundle" && (
-                <div style={{ marginTop: "10px" }} className={styles.colorPicker}>
+                <div
+                  style={{ marginTop: "10px" }}
+                  className={styles.colorPicker}
+                >
                   <ColorPicker
                     onChange={(e) => handleChange(e, "bundleBackColor")}
                     color={data.bundleBackColor}
@@ -394,48 +412,61 @@ const ColorsLayout = ({ data, handleChange }) => {
             </div>
           </Grid.Cell>
           <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 3, xl: 3 }}>
-          <div className={styles.themeColorOption}>
-            <Box gap="300" align="start" blockAlign="center">
-              <div
-                variant="secondary"
-                size="medium"
-                style={{padding: "10px 10px 8px", borderRadius: "10px", backgroundColor: '#fff', boxShadow: "0px 4px 10px 0px rgba(0,0,0,0.15)"}}
-              >
-                <div className={styles.colorBox}>
-                  <div
-                    onClick={() => handleOpen("border")}
-                    style={{
-                      backgroundColor: hsbToHex(data.borderColor),
-                      width: "100%",
-                      height: "110px",
-                      borderRadius: "12px",
-                      cursor: "pointer",
-                      border: `1px solid rgba(0,0,0,0.06)`,
-                    }}
-                  ></div>
-                  <div className={styles.colorCode}>
-                    <Text variant="bodyXs" as="h3" fontWeight="bold">
-                      {hsbToHex(data.borderColor)}
+            <div className={styles.themeColorOption}>
+              <Box gap="300" align="start" blockAlign="center">
+                <div
+                  variant="secondary"
+                  size="medium"
+                  style={{
+                    padding: "10px 10px 8px",
+                    borderRadius: "10px",
+                    backgroundColor: "#fff",
+                    boxShadow: "0px 4px 10px 0px rgba(0,0,0,0.15)",
+                  }}
+                >
+                  <div className={styles.colorBox}>
+                    <div
+                      onClick={() => handleOpen("border")}
+                      style={{
+                        backgroundColor: hsbToHex(data.borderColor),
+                        width: "100%",
+                        height: "110px",
+                        borderRadius: "12px",
+                        cursor: "pointer",
+                        border: `1px solid rgba(0,0,0,0.06)`,
+                      }}
+                    ></div>
+                    <div className={styles.colorCode}>
+                      <Text variant="bodyXs" as="h3" fontWeight="bold">
+                        {hsbToHex(data.borderColor)}
+                      </Text>
+                    </div>
+                  </div>
+
+                  <div style={{ marginTop: "8px" }}>
+                    <Text
+                      variant="bodyMd"
+                      as="h3"
+                      alignment="center"
+                      fontWeight="bold"
+                    >
+                      Border
                     </Text>
                   </div>
                 </div>
-              
-                <div style={{marginTop: "8px"}}>
-                    <Text variant="bodyMd" as="h3" alignment="center" fontWeight="bold">
-                      Border
-                    </Text>
+              </Box>
+              {open == "border" && (
+                <div
+                  style={{ marginTop: "10px" }}
+                  className={styles.colorPicker}
+                >
+                  <ColorPicker
+                    onChange={(e) => handleChange(e, "borderColor")}
+                    color={data.borderColor}
+                    allowAlpha
+                  />
                 </div>
-              </div>
-            </Box>
-            {open == "border" && (
-              <div style={{ marginTop: "10px" }} className={styles.colorPicker}>
-                <ColorPicker
-                  onChange={(e) => handleChange(e, "borderColor")}
-                  color={data.borderColor}
-                  allowAlpha
-                />
-              </div>
-            )}
+              )}
             </div>
           </Grid.Cell>
           <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 3, xl: 3 }}>
@@ -444,7 +475,12 @@ const ColorsLayout = ({ data, handleChange }) => {
                 <div
                   variant="secondary"
                   size="medium"
-                  style={{padding: "10px 10px 8px", borderRadius: "10px", backgroundColor: '#fff', boxShadow: "0px 4px 10px 0px rgba(0,0,0,0.15)"}}
+                  style={{
+                    padding: "10px 10px 8px",
+                    borderRadius: "10px",
+                    backgroundColor: "#fff",
+                    boxShadow: "0px 4px 10px 0px rgba(0,0,0,0.15)",
+                  }}
                 >
                   <div className={styles.colorBox}>
                     <div
@@ -464,17 +500,24 @@ const ColorsLayout = ({ data, handleChange }) => {
                       </Text>
                     </div>
                   </div>
-                  
-                
-                  <div style={{marginTop: "8px"}}>
-                      <Text variant="bodyMd" as="h3" alignment="center" fontWeight="bold">
-                        Selected Bundle
-                      </Text>
+
+                  <div style={{ marginTop: "8px" }}>
+                    <Text
+                      variant="bodyMd"
+                      as="h3"
+                      alignment="center"
+                      fontWeight="bold"
+                    >
+                      Selected Bundle
+                    </Text>
                   </div>
                 </div>
               </Box>
               {open == "selected_bundle" && (
-                <div style={{ marginTop: "10px" }} className={styles.colorPicker}>
+                <div
+                  style={{ marginTop: "10px" }}
+                  className={styles.colorPicker}
+                >
                   <ColorPicker
                     onChange={(e) => handleChange(e, "selectBundleBackColor")}
                     color={data.selectBundleBackColor}
@@ -485,298 +528,386 @@ const ColorsLayout = ({ data, handleChange }) => {
             </div>
           </Grid.Cell>
           <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 3, xl: 3 }}>
-          <div className={styles.themeColorOption}>
-            <Box gap="300" align="start" blockAlign="center">
-              <div
-                variant="secondary"
-                size="medium"
-                style={{padding: "10px 10px 8px", borderRadius: "10px", backgroundColor: '#fff', boxShadow: "0px 4px 10px 0px rgba(0,0,0,0.15)"}}
-              >
-                <div className={styles.colorBox}>
-                  <div
-                    onClick={() => handleOpen("border_selected_bundle")}
-                    style={{
-                      backgroundColor: hsbToHex(data.selectBorderColor),
-                      width: "100%",
-                      height: "110px",
-                      borderRadius: "12px",
-                      cursor: "pointer",
-                      border: `1px solid rgba(0,0,0,0.06)`,
-                    }}
-                  ></div>
-                  <div className={styles.colorCode}>
-                    <Text variant="bodyXs" as="h3" fontWeight="bold">
-                      {hsbToHex(data.selectBorderColor)}
+            <div className={styles.themeColorOption}>
+              <Box gap="300" align="start" blockAlign="center">
+                <div
+                  variant="secondary"
+                  size="medium"
+                  style={{
+                    padding: "10px 10px 8px",
+                    borderRadius: "10px",
+                    backgroundColor: "#fff",
+                    boxShadow: "0px 4px 10px 0px rgba(0,0,0,0.15)",
+                  }}
+                >
+                  <div className={styles.colorBox}>
+                    <div
+                      onClick={() => handleOpen("border_selected_bundle")}
+                      style={{
+                        backgroundColor: hsbToHex(data.selectBorderColor),
+                        width: "100%",
+                        height: "110px",
+                        borderRadius: "12px",
+                        cursor: "pointer",
+                        border: `1px solid rgba(0,0,0,0.06)`,
+                      }}
+                    ></div>
+                    <div className={styles.colorCode}>
+                      <Text variant="bodyXs" as="h3" fontWeight="bold">
+                        {hsbToHex(data.selectBorderColor)}
+                      </Text>
+                    </div>
+                  </div>
+
+                  <div style={{ marginTop: "8px" }}>
+                    <Text
+                      variant="bodyMd"
+                      as="h3"
+                      alignment="center"
+                      fontWeight="bold"
+                    >
+                      Border selected bundle
                     </Text>
                   </div>
                 </div>
-              
-                <div style={{marginTop: "8px"}}>
-                    <Text variant="bodyMd" as="h3" alignment="center" fontWeight="bold">
-                      Border selected bundle
-                    </Text>
+              </Box>
+              {open == "border_selected_bundle" && (
+                <div
+                  style={{ marginTop: "10px" }}
+                  className={styles.colorPicker}
+                >
+                  <ColorPicker
+                    onChange={(e) => handleChange(e, "selectBorderColor")}
+                    color={data.selectBorderColor}
+                    allowAlpha
+                  />
                 </div>
-              </div>
-            </Box>
-            {open == "border_selected_bundle" && (
-              <div style={{ marginTop: "10px" }} className={styles.colorPicker}>
-                <ColorPicker
-                  onChange={(e) => handleChange(e, "selectBorderColor")}
-                  color={data.selectBorderColor}
-                  allowAlpha
-                />
-              </div>
-            )}
+              )}
             </div>
           </Grid.Cell>
         </Grid>
       </div>
 
-      <div className="options" style={{marginTop: "20px"}}>
-        <div className="colorLayoutTitle" style={{borderBottom: "1px solid #E1E1E1", paddingBottom: "10px", marginBottom: "20px"}}>
+      <div className="options" style={{ marginTop: "20px" }}>
+        <div
+          className="colorLayoutTitle"
+          style={{
+            borderBottom: "1px solid #E1E1E1",
+            paddingBottom: "10px",
+            marginBottom: "20px",
+          }}
+        >
           <Text variant="headingLg" fontWeight="bold" as="h2">
             Pricing
           </Text>
         </div>
 
-      
         <Grid>
           <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 3, xl: 3 }}>
-          <div className={styles.themeColorOption}>
-            <Box gap="300" align="start" blockAlign="center">
-              <div
-                variant="secondary"
-                size="medium"
-                style={{padding: "10px 10px 8px", borderRadius: "10px", backgroundColor: '#fff', boxShadow: "0px 4px 10px 0px rgba(0,0,0,0.15)"}}
-              >
-                <div className={styles.colorBox}>
-                  <div
-                    onClick={() => handleOpen("price")}
-                    style={{
-                      backgroundColor: hsbToHex(data.priceColor),
-                      width: "100%",
-                      height: "110px",
-                      borderRadius: "12px",
-                      cursor: "pointer",
-                      border: `1px solid rgba(0,0,0,0.06)`,
-                    }}
-                  ></div>
-                  <div className={styles.colorCode}>
-                    <Text variant="bodyXs" as="h3" fontWeight="bold">
-                      {hsbToHex(data.priceColor)}
+            <div className={styles.themeColorOption}>
+              <Box gap="300" align="start" blockAlign="center">
+                <div
+                  variant="secondary"
+                  size="medium"
+                  style={{
+                    padding: "10px 10px 8px",
+                    borderRadius: "10px",
+                    backgroundColor: "#fff",
+                    boxShadow: "0px 4px 10px 0px rgba(0,0,0,0.15)",
+                  }}
+                >
+                  <div className={styles.colorBox}>
+                    <div
+                      onClick={() => handleOpen("price")}
+                      style={{
+                        backgroundColor: hsbToHex(data.priceColor),
+                        width: "100%",
+                        height: "110px",
+                        borderRadius: "12px",
+                        cursor: "pointer",
+                        border: `1px solid rgba(0,0,0,0.06)`,
+                      }}
+                    ></div>
+                    <div className={styles.colorCode}>
+                      <Text variant="bodyXs" as="h3" fontWeight="bold">
+                        {hsbToHex(data.priceColor)}
+                      </Text>
+                    </div>
+                  </div>
+
+                  <div style={{ marginTop: "8px" }}>
+                    <Text
+                      variant="bodyMd"
+                      as="h3"
+                      alignment="center"
+                      fontWeight="bold"
+                    >
+                      Price
                     </Text>
                   </div>
                 </div>
-              
-            
-                <div style={{marginTop: "8px"}}>
-                    <Text variant="bodyMd" as="h3" alignment="center" fontWeight="bold">
-                      Price
-                    </Text>
+              </Box>
+              {open == "price" && (
+                <div
+                  style={{ marginTop: "10px" }}
+                  className={styles.colorPicker}
+                >
+                  <ColorPicker
+                    onChange={(e) => handleChange(e, "priceColor")}
+                    color={data.priceColor}
+                    allowAlpha
+                  />
                 </div>
-              </div>
-            </Box>
-            {open == "price" && (
-              <div style={{ marginTop: "10px" }} className={styles.colorPicker}>
-                <ColorPicker
-                  onChange={(e) => handleChange(e, "priceColor")}
-                  color={data.priceColor}
-                  allowAlpha
-                />
-              </div>
-            )}
+              )}
             </div>
           </Grid.Cell>
           <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 3, xl: 3 }}>
-          <div className={styles.themeColorOption}>
-            <Box gap="300" align="start" blockAlign="center">
-              <div
-                
-                variant="secondary"
-                size="medium"
-                style={{padding: "10px 10px 8px", borderRadius: "10px", backgroundColor: '#fff', boxShadow: "0px 4px 10px 0px rgba(0,0,0,0.15)"}}
-              >
-                <div className={styles.colorBox}>
-                  <div
-                    onClick={() => handleOpen("compared_price")}
-                    style={{
-                      backgroundColor: hsbToHex(data.comparedPriceColor),
-                      width: "100%",
-                      height: "110px",
-                      borderRadius: "12px",
-                      cursor: "pointer",
-                      border: `1px solid rgba(0,0,0,0.06)`,
-                    }}
-                  ></div>
-                  <div className={styles.colorCode}>
-                    <Text variant="bodyXs" as="h3" fontWeight="bold">
-                      {hsbToHex(data.comparedPriceColor)}
+            <div className={styles.themeColorOption}>
+              <Box gap="300" align="start" blockAlign="center">
+                <div
+                  variant="secondary"
+                  size="medium"
+                  style={{
+                    padding: "10px 10px 8px",
+                    borderRadius: "10px",
+                    backgroundColor: "#fff",
+                    boxShadow: "0px 4px 10px 0px rgba(0,0,0,0.15)",
+                  }}
+                >
+                  <div className={styles.colorBox}>
+                    <div
+                      onClick={() => handleOpen("compared_price")}
+                      style={{
+                        backgroundColor: hsbToHex(data.comparedPriceColor),
+                        width: "100%",
+                        height: "110px",
+                        borderRadius: "12px",
+                        cursor: "pointer",
+                        border: `1px solid rgba(0,0,0,0.06)`,
+                      }}
+                    ></div>
+                    <div className={styles.colorCode}>
+                      <Text variant="bodyXs" as="h3" fontWeight="bold">
+                        {hsbToHex(data.comparedPriceColor)}
+                      </Text>
+                    </div>
+                  </div>
+
+                  <div style={{ marginTop: "8px" }}>
+                    <Text
+                      variant="bodyMd"
+                      as="h3"
+                      alignment="center"
+                      fontWeight="bold"
+                    >
+                      Compared Price
                     </Text>
                   </div>
                 </div>
-              
-                <div style={{marginTop: "8px"}}>
-                  <Text variant="bodyMd" as="h3" alignment="center" fontWeight="bold">
-                    Compared Price
-                  </Text>
+              </Box>
+              {open == "compared_price" && (
+                <div
+                  style={{ marginTop: "10px" }}
+                  className={styles.colorPicker}
+                >
+                  <ColorPicker
+                    onChange={(e) => handleChange(e, "comparedPriceColor")}
+                    color={data.comparedPriceColor}
+                    allowAlpha
+                  />
                 </div>
-              </div>
-            </Box>
-            {open == "compared_price" && (
-              <div style={{ marginTop: "10px" }} className={styles.colorPicker}>
-                <ColorPicker
-                  onChange={(e) => handleChange(e, "comparedPriceColor")}
-                  color={data.comparedPriceColor}
-                  allowAlpha
-                />
-              </div>
-            )}
+              )}
             </div>
           </Grid.Cell>
         </Grid>
       </div>
 
-      <div className="options" style={{marginTop: "20px"}}>
-        <div className="colorLayoutTitle" style={{borderBottom: "1px solid #E1E1E1", paddingBottom: "10px", marginBottom: "20px"}}>
+      <div className="options" style={{ marginTop: "20px" }}>
+        <div
+          className="colorLayoutTitle"
+          style={{
+            borderBottom: "1px solid #E1E1E1",
+            paddingBottom: "10px",
+            marginBottom: "20px",
+          }}
+        >
           <Text variant="headingLg" fontWeight="bold" as="h2">
             Text
           </Text>
         </div>
         <Grid>
           <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 3, xl: 3 }}>
-          <div className={styles.themeColorOption}>
-            <Box gap="300" align="start" blockAlign="center">
-              <div
-                
-                variant="secondary"
-                size="medium"
-                style={{padding: "10px 10px 8px", borderRadius: "10px", backgroundColor: '#fff', boxShadow: "0px 4px 10px 0px rgba(0,0,0,0.15)"}}
-              >
-                <div className={styles.colorBox}>
-                  <div
-                    onClick={() => handleOpen("header")}
-                    style={{
-                      backgroundColor: hsbToHex(data.headerColor),
-                      width: "100%",
-                      height: "110px",
-                      borderRadius: "12px",
-                      cursor: "pointer",
-                      border: `1px solid rgba(0,0,0,0.06)`,
-                    }}
-                  ></div>
-                  <div className={styles.colorCode}>
-                    <Text variant="bodyXs" as="h3" fontWeight="bold">
-                      {hsbToHex(data.headerColor)}
-                    </Text>
+            <div className={styles.themeColorOption}>
+              <Box gap="300" align="start" blockAlign="center">
+                <div
+                  variant="secondary"
+                  size="medium"
+                  style={{
+                    padding: "10px 10px 8px",
+                    borderRadius: "10px",
+                    backgroundColor: "#fff",
+                    boxShadow: "0px 4px 10px 0px rgba(0,0,0,0.15)",
+                  }}
+                >
+                  <div className={styles.colorBox}>
+                    <div
+                      onClick={() => handleOpen("header")}
+                      style={{
+                        backgroundColor: hsbToHex(data.headerColor),
+                        width: "100%",
+                        height: "110px",
+                        borderRadius: "12px",
+                        cursor: "pointer",
+                        border: `1px solid rgba(0,0,0,0.06)`,
+                      }}
+                    ></div>
+                    <div className={styles.colorCode}>
+                      <Text variant="bodyXs" as="h3" fontWeight="bold">
+                        {hsbToHex(data.headerColor)}
+                      </Text>
+                    </div>
                   </div>
-                </div>
-              
-                <div style={{marginTop: "8px"}}>
-                    <Text variant="bodyMd" as="h3" alignment="center" fontWeight="bold">
+
+                  <div style={{ marginTop: "8px" }}>
+                    <Text
+                      variant="bodyMd"
+                      as="h3"
+                      alignment="center"
+                      fontWeight="bold"
+                    >
                       Header
                     </Text>
+                  </div>
                 </div>
-              </div>
-            </Box>
-            {open == "header" && (
-              <div style={{ marginTop: "10px" }} className={styles.colorPicker}>
-                <ColorPicker
-                  onChange={(e) => handleChange(e, "headerColor")}
-                  color={data.headerColor}
-                  allowAlpha
-                />
-              </div>
-            )}
+              </Box>
+              {open == "header" && (
+                <div
+                  style={{ marginTop: "10px" }}
+                  className={styles.colorPicker}
+                >
+                  <ColorPicker
+                    onChange={(e) => handleChange(e, "headerColor")}
+                    color={data.headerColor}
+                    allowAlpha
+                  />
+                </div>
+              )}
             </div>
           </Grid.Cell>
           <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 3, xl: 3 }}>
-          <div className={styles.themeColorOption}>
-            <Box gap="300" align="start" blockAlign="center">
-              <div
-                variant="secondary"
-                size="medium"
-                style={{padding: "10px 10px 8px", borderRadius: "10px", backgroundColor: '#fff', boxShadow: "0px 4px 10px 0px rgba(0,0,0,0.15)"}}
-              >
-                <div className={styles.colorBox}>
-                  <div
-                    onClick={() => handleOpen("title")} 
-                    style={{
-                      backgroundColor: hsbToHex(data.titleColor),
-                      width: "100%",
-                      height: "110px",
-                      borderRadius: "12px",
-                      cursor: "pointer",
-                      border: `1px solid rgba(0,0,0,0.06)`,
-                    }}
-                  ></div>
-                  <div className={styles.colorCode}>
-                    <Text variant="bodyXs" as="h3" fontWeight="bold">
-                      {hsbToHex(data.titleColor)}
+            <div className={styles.themeColorOption}>
+              <Box gap="300" align="start" blockAlign="center">
+                <div
+                  variant="secondary"
+                  size="medium"
+                  style={{
+                    padding: "10px 10px 8px",
+                    borderRadius: "10px",
+                    backgroundColor: "#fff",
+                    boxShadow: "0px 4px 10px 0px rgba(0,0,0,0.15)",
+                  }}
+                >
+                  <div className={styles.colorBox}>
+                    <div
+                      onClick={() => handleOpen("title")}
+                      style={{
+                        backgroundColor: hsbToHex(data.titleColor),
+                        width: "100%",
+                        height: "110px",
+                        borderRadius: "12px",
+                        cursor: "pointer",
+                        border: `1px solid rgba(0,0,0,0.06)`,
+                      }}
+                    ></div>
+                    <div className={styles.colorCode}>
+                      <Text variant="bodyXs" as="h3" fontWeight="bold">
+                        {hsbToHex(data.titleColor)}
+                      </Text>
+                    </div>
+                  </div>
+
+                  <div style={{ marginTop: "8px" }}>
+                    <Text
+                      variant="bodyMd"
+                      as="h3"
+                      alignment="center"
+                      fontWeight="bold"
+                    >
+                      Title
                     </Text>
                   </div>
                 </div>
-              
-                <div style={{marginTop: "8px"}}>
-                  <Text variant="bodyMd" as="h3" alignment="center" fontWeight="bold">
-                    Title
-                    </Text>
+              </Box>
+              {open == "title" && (
+                <div
+                  style={{ marginTop: "10px" }}
+                  className={styles.colorPicker}
+                >
+                  <ColorPicker
+                    onChange={(e) => handleChange(e, "titleColor")}
+                    color={data.titleColor}
+                    allowAlpha
+                  />
                 </div>
-              </div>
-            </Box>
-            {open == "title" && (
-              <div style={{ marginTop: "10px" }} className={styles.colorPicker}>
-                <ColorPicker
-                  onChange={(e) => handleChange(e, "titleColor")}
-                  color={data.titleColor}
-                  allowAlpha
-                />
-              </div>
-            )}
+              )}
             </div>
           </Grid.Cell>
           <Grid.Cell columnSpan={{ xs: 6, sm: 3, md: 3, lg: 3, xl: 3 }}>
-          <div className={styles.themeColorOption}>
-            <Box gap="300" align="start" blockAlign="center">
-              <div
-                variant="secondary"
-                size="medium"
-                style={{padding: "10px 10px 8px", borderRadius: "10px", backgroundColor: '#fff', boxShadow: "0px 4px 10px 0px rgba(0,0,0,0.15)"}}
-              >
-                <div className={styles.colorBox}>
-                  <div
-                  onClick={() => handleOpen("subTitle")}
-                    style={{
-                      backgroundColor: hsbToHex(data.subTitleColor),
-                      width: "100%",
-                      height: "110px",
-                      borderRadius: "12px",
-                      cursor: "pointer",
-                      border: `1px solid rgba(0,0,0,0.06)`,
-                    }}
-                  ></div>
-                  <div className={styles.colorCode}>
-                    <Text variant="bodyXs" as="h3" fontWeight="bold">
-                      {hsbToHex(data.subTitleColor)}
+            <div className={styles.themeColorOption}>
+              <Box gap="300" align="start" blockAlign="center">
+                <div
+                  variant="secondary"
+                  size="medium"
+                  style={{
+                    padding: "10px 10px 8px",
+                    borderRadius: "10px",
+                    backgroundColor: "#fff",
+                    boxShadow: "0px 4px 10px 0px rgba(0,0,0,0.15)",
+                  }}
+                >
+                  <div className={styles.colorBox}>
+                    <div
+                      onClick={() => handleOpen("subTitle")}
+                      style={{
+                        backgroundColor: hsbToHex(data.subTitleColor),
+                        width: "100%",
+                        height: "110px",
+                        borderRadius: "12px",
+                        cursor: "pointer",
+                        border: `1px solid rgba(0,0,0,0.06)`,
+                      }}
+                    ></div>
+                    <div className={styles.colorCode}>
+                      <Text variant="bodyXs" as="h3" fontWeight="bold">
+                        {hsbToHex(data.subTitleColor)}
+                      </Text>
+                    </div>
+                  </div>
+
+                  <div style={{ marginTop: "8px" }}>
+                    <Text
+                      variant="bodyMd"
+                      as="h3"
+                      alignment="center"
+                      fontWeight="bold"
+                    >
+                      Subtitle
                     </Text>
                   </div>
                 </div>
-              
-                <div style={{marginTop: "8px"}}>
-                    <Text variant="bodyMd" as="h3" alignment="center" fontWeight="bold">
-                      Subtitle 
-                    </Text>
+              </Box>
+              {open == "subTitle" && (
+                <div
+                  style={{ marginTop: "10px" }}
+                  className={styles.colorPicker}
+                >
+                  <ColorPicker
+                    onChange={(e) => handleChange(e, "subTitleColor")}
+                    color={data.subTitleColor}
+                    allowAlpha
+                  />
                 </div>
-              </div>
-            </Box>
-            {open == "subTitle" && (
-              <div style={{ marginTop: "10px" }} className={styles.colorPicker}>
-                <ColorPicker
-                  onChange={(e) => handleChange(e, "subTitleColor")}
-                  color={data.subTitleColor}
-                  allowAlpha
-                />
-              </div>
-            )}
+              )}
             </div>
           </Grid.Cell>
         </Grid>
@@ -937,23 +1068,23 @@ export default function Bundle() {
               onSelect={(e) => handleChange(e, "tab")}
               fitted
             >
-              <div className={styles.tabLayout} style={{overflow: 'auto'}}>
-              <LegacyCard.Section>
-                <Form>
-                  {form.tab == "0" && (
-                    <BlockLayout data={form} handleChange={handleChange} />
-                  )}
-                  {form.tab == "1" && (
-                    <OffersLayout data={form} handleChange={handleChange} />
-                  )}
-                  {form.tab == "2" && (
-                    <FontSizeLayout data={form} handleChange={handleChange} />
-                  )}
-                  {form.tab == "3" && (
-                    <ColorsLayout data={form} handleChange={handleChange} />
-                  )}
-                </Form>
-              </LegacyCard.Section>
+              <div className={styles.tabLayout} style={{ overflow: "auto" }}>
+                <LegacyCard.Section>
+                  <Form>
+                    {form.tab == "0" && (
+                      <BlockLayout data={form} handleChange={handleChange} />
+                    )}
+                    {form.tab == "1" && (
+                      <OffersLayout data={form} handleChange={handleChange} />
+                    )}
+                    {form.tab == "2" && (
+                      <FontSizeLayout data={form} handleChange={handleChange} />
+                    )}
+                    {form.tab == "3" && (
+                      <ColorsLayout data={form} handleChange={handleChange} />
+                    )}
+                  </Form>
+                </LegacyCard.Section>
               </div>
             </Tabs>
           </LegacyCard>
@@ -983,8 +1114,8 @@ export default function Bundle() {
                     padding: "15px 20px",
                     margin: "10px 0",
                     backgroundColor: `${form.radio === "optionOne" ? `${hsbToHex(form.selectBundleBackColor)}` : `${hsbToHex(form.bundleBackColor)}`}`,
-                    borderRadius: '12px',
-                    cursor: "pointer"
+                    borderRadius: "12px",
+                    cursor: "pointer",
                   }}
                 >
                   <div
@@ -1025,14 +1156,13 @@ export default function Bundle() {
                             fontWeight: form.titlePriceFontStyle,
                             color: hsbToHex(form.priceColor),
                             marginTop: "7px",
-                            fontWeight: 'bold'
                           }}
                         >
                           ₹{`${(885.95 * form.offerOneQty).toFixed(2)}`}
                         </div>
                       </div>
                     </div>
-                    <div style={{textAlign: "right"}}>
+                    <div style={{ textAlign: "right" }}>
                       <div
                         style={{
                           fontSize: `${form.subHeaderFontSize}px`,
@@ -1057,14 +1187,14 @@ export default function Bundle() {
                   </div>
                 </div>
                 <div
-                 onClick={() => handleChange("optionTwo", "radio")}
+                  onClick={() => handleChange("optionTwo", "radio")}
                   style={{
                     border: `${form.radio === "optionTwo" ? `1px solid ${hsbToHex(form.selectBorderColor)}` : `1px solid ${hsbToHex(form.borderColor)}`}`,
                     padding: "15px 20px",
                     margin: "10px 0",
                     backgroundColor: `${form.radio === "optionTwo" ? `${hsbToHex(form.selectBundleBackColor)}` : `${hsbToHex(form.bundleBackColor)}`}`,
-                    borderRadius: '12px',
-                    cursor: "pointer"
+                    borderRadius: "12px",
+                    cursor: "pointer",
                   }}
                 >
                   <div
@@ -1105,14 +1235,13 @@ export default function Bundle() {
                             fontWeight: form.titlePriceFontStyle,
                             marginTop: "7px",
                             color: hsbToHex(form.priceColor),
-                            fontWeight: 'bold'
                           }}
                         >
                           ₹{`${(1594.71 * form.offerTwoQty).toFixed(2)}`}
                         </div>
                       </div>
                     </div>
-                    <div style={{textAlign: "right"}}>
+                    <div style={{ textAlign: "right" }}>
                       <div
                         style={{
                           fontSize: `${form.subHeaderFontSize}px`,
@@ -1143,8 +1272,8 @@ export default function Bundle() {
                     padding: "15px 20px",
                     margin: "10px 0",
                     backgroundColor: `${form.radio === "optionThree" ? `${hsbToHex(form.selectBundleBackColor)}` : `${hsbToHex(form.bundleBackColor)}`}`,
-                    borderRadius: '12px',
-                    cursor: "pointer"
+                    borderRadius: "12px",
+                    cursor: "pointer",
                   }}
                 >
                   <div
@@ -1185,14 +1314,13 @@ export default function Bundle() {
                             fontWeight: form.titlePriceFontStyle,
                             marginTop: "7px",
                             color: hsbToHex(form.priceColor),
-                            fontWeight: 'bold'
                           }}
                         >
                           ₹{`${(2126.28 * form.offerThreeQty).toFixed(2)}`}
                         </div>
                       </div>
                     </div>
-                    <div style={{textAlign: "right"}}>
+                    <div style={{ textAlign: "right" }}>
                       <div
                         style={{
                           fontSize: `${form.subHeaderFontSize}px`,
