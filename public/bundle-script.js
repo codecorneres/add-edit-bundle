@@ -13,10 +13,16 @@
       return;
     }
 
-    fetch('https://bundle-products.codecorners.in/api/bundles?productId=' + productId)
-      .then(res => { console.log(res, 'resresres'); return res.json()})
+    fetch('https://bundle-products.codecorners.in/api/bundles?productId=' + encodeURIComponent(productId))
+      .then(res => {
+        console.log(res, 'resresres');
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      })
       .then(data => {
-        console.log(data, 'dataatatatata')
+        console.log(data, 'dataatatatata');
         root.innerHTML = `
           <div style="padding: 16px; border: 2px dashed #ccc; background: #f9f9f9;">
             <h3>Bundles for Product ID: ${productId}</h3>

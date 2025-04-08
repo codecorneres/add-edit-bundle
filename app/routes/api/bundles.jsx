@@ -7,10 +7,16 @@ export const loader = async ({ request }) => {
   const productId = url.searchParams.get("productId");
 
   if (!productId) {
-    return json({ error: "Missing productId" }, { status: 400 });
+    return new Response(JSON.stringify({ error: "Missing productId" }), {
+      status: 400,
+      headers: {
+        "Access-Control-Allow-Origin": "*", // 🔐 Replace '*' with your Shopify domain for production
+        "Content-Type": "application/json",
+      },
+    });
   }
 
-  return json([
+  const bundles = [
     {
       id: "bundle1",
       productId,
@@ -29,5 +35,13 @@ export const loader = async ({ request }) => {
         { id: "item4", title: "Product D", quantity: 3 },
       ],
     },
-  ]);
+  ];
+
+  return new Response(JSON.stringify(bundles), {
+    status: 200,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Content-Type": "application/json",
+    },
+  });
 };
