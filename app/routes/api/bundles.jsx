@@ -8,8 +8,7 @@ export const loader = async ({ request }) => {
     return json({ error: "Missing productId" }, { status: 400 });
   }
 
-  // ✅ Dummy bundle data (replace this with real DB logic later)
-  const bundles = [
+  return json([
     {
       id: "bundle1",
       productId,
@@ -28,7 +27,5 @@ export const loader = async ({ request }) => {
         { id: "item4", title: "Product D", quantity: 3 },
       ],
     },
-  ];
-
-  return json(bundles);
+  ]);
 };
