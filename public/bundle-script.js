@@ -14,7 +14,7 @@
       return;
     }
 
-    fetch('https://bundle-products.codecorners.in/api/bundles?productId=' + productId)
+    fetch('https://bundle-products.codecorners.in/bundles?productId=' + productId)
       .then(res => res.json())
       .then(data => {
         root.innerHTML = `
