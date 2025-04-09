@@ -1,4 +1,3 @@
-import { json } from "@remix-run/node";
 import { authenticate } from "../../shopify.server";
 
 export const loader = async ({ request }) => {
@@ -10,7 +9,7 @@ export const loader = async ({ request }) => {
     return new Response(JSON.stringify({ error: "Missing productId" }), {
       status: 400,
       headers: {
-        "Access-Control-Allow-Origin": "*", // 🔐 Replace '*' with your Shopify domain for production
+        "Access-Control-Allow-Origin": "*",
         "Content-Type": "application/json",
       },
     });

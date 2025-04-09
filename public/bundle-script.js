@@ -13,7 +13,7 @@
       return;
     }
 
-    fetch('https://bundle-products.codecorners.in/api/bundles?productId=' + encodeURIComponent(productId))
+    fetch('/api/bundles?productId=' + encodeURIComponent(productId))
       .then(res => {
         console.log(res, 'resresres');
         if (!res.ok) {
